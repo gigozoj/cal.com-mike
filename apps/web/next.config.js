@@ -192,16 +192,9 @@ const nextConfig = {
   },
   transpilePackages: [
   ],
-  modularizeImports: {
-      skipDefaultConversion: true,
-      preventFullImport: true,
-    },
-    lodash: {
-      transform: "lodash/{{member}}",
-    },
-  },
   images: {
     unoptimized: true,
+  },
   },
   webpack: (config, { webpack, buildId, isServer }) => {
     if (isServer) {
