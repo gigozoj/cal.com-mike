@@ -1,0 +1,49 @@
+{
+  "name": "@calcom/prisma",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules",
+    "build": "ts-node --transpile-only ./auto-migrations.ts",
+    "db-deploy": "npm run prisma migrate deploy",
+    "db-migrate": "npm run prisma migrate dev",
+    "db-nuke": "docker compose down --volumes --remove-orphans || docker-compose down --volumes --remove-orphans",
+    "db-reset": "npm run prisma migrate reset",
+    "db-seed": "npm run prisma db seed",
+    "db-setup": "npm run db-up && npm run db-seed",
+    "db-studio": "npm run prisma studio",
+    "db-up": "npm run prisma db push",
+    "dx": "npm run db-setup",
+    "generate-schemas": "npm run prisma generate && npm run prisma format",
+    "post-install": "npm run generate-schemas",
+    "seed-app-store": "ts-node --transpile-only ./seed-app-store.ts",
+    "delete-app": "ts-node --transpile-only ./delete-app.ts",
+    "seed-insights": "ts-node --transpile-only ./seed-insights.ts",
+    "seed": "ts-node --transpile-only ./seed.ts"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "9.2.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "@calcom/lib": "*",
+    "@prisma/client": "^5.4.2",
+    "@prisma/extension-accelerate": "^0.6.2",
+    "@prisma/generator-helper": "^5.4.2",
+    "prisma": "^5.4.2",
+    "prisma-kysely": "^1.7.1",
+    "ts-node": "^10.9.1",
+    "zod": "^3.22.4",
+    "zod-prisma": "^0.5.4"
+  },
+  "main": "index.ts",
+  "types": "index.d.ts",
+  "files": [
+    "client",
+    "zod",
+    "zod-utils.ts"
+  ],
+  "prisma": {
+    "seed": "ts-node --transpile-only ./seed.ts"
+  }
+}
