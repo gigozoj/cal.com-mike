@@ -180,7 +180,6 @@ const nextConfig = {
   ],
   experimental: {
     // externalize server-side node_modules with size > 1mb, to improve dev mode performance/RAM usage
-    optimizePackageImports: ["@calcom/ui"],
   },
   productionBrowserSourceMaps: true,
   /* We already do type check on GH actions */
@@ -192,20 +191,8 @@ const nextConfig = {
     ignoreDuringBuilds: !!process.env.CI,
   },
   transpilePackages: [
-    "@calcom/app-store",
-    "@calcom/dayjs",
-    "@calcom/emails",
-    "@calcom/embed-core",
-    "@calcom/embed-react",
-    "@calcom/embed-snippet",
-    "@calcom/features",
-    "@calcom/lib",
-    "@calcom/prisma",
-    "@calcom/trpc",
   ],
   modularizeImports: {
-    "@calcom/features/insights/components": {
-      transform: "@calcom/features/insights/components/{{member}}",
       skipDefaultConversion: true,
       preventFullImport: true,
     },
