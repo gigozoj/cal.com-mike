@@ -1,6 +1,5 @@
 require("dotenv").config({ path: "../../.env" });
 const englishTranslation = require("./public/static/locales/en/common.json");
-const { withAxiom } = require("next-axiom");
 const { version } = require("./package.json");
 const {
   i18n: { locales },
@@ -112,7 +111,6 @@ if (process.env.ANALYZE === "true") {
   plugins.push(withBundleAnalyzer);
 }
 
-plugins.push(withAxiom);
 const orgDomainMatcherConfig = {
   root: nextJsOrgRewriteConfig.disableRootPathRewrite
     ? null
